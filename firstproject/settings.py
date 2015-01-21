@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
+#tells Django about our 'static' directory where we store images
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -81,4 +86,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+#defines the base URL with which your Django
+#applications will find static media files when the server is running
 STATIC_URL = '/static/'
+
+#specifies the location of the newly created static directory
+#requires an absolute path
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
+
+# Tells my project where the templates will be housed
+#(hard-coded path - makes project less portable!)
+#TEMPLATE_DIRS = ['H:/firstproject/']
+
+
+TEMPLATE_DIRS = [
+    TEMPLATE_PATH,
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Absolute path to the media directory
+
