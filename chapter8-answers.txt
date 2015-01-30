@@ -1,0 +1,8 @@
+What happens when you don’t enter in a category name on the add category form?:
+-An error message 'This field is required' appears and does not let us create a category without a name.
+What happens when you try to add a category that already exists?:
+-An error message 'Category with this Name already exists.' appears and does not let us creat a category.
+What happens when you visit a category that does not exist?:
+-An error message 'The specified category does not exist! ' appears.
+How could you gracefully handle when a user visits a category that does not exist?:
+-Apart from the message that appears i would add a link to the index page.
