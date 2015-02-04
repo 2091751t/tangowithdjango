@@ -36,13 +36,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.auth',# provides Django with access to the authentication system
+    'django.contrib.contenttypes',    #used by the authentication application to track models installed in your database.
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rango'
-)
+    'rango',
+) 
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -90,6 +91,7 @@ USE_TZ = True
 #applications will find static media files when the server is running
 STATIC_URL = '/static/'
 
+LOGIN_URL = '/rango/login/'
 #specifies the location of the newly created static directory
 #requires an absolute path
 STATICFILES_DIRS = (
@@ -107,5 +109,4 @@ TEMPLATE_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# Absolute path to the media directory
 
