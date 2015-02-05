@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-
-
-{% load staticfiles %} <!-- New line -->
-
-<html>
-
-    <head>
-        <title>Rango</title>
-    </head>
-
-    <body>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{ category_name }}{% endblock %}
+{% block body_block %}
         <h1>Rango says...</h1>
 		<strong>{{ boldmessage }}</strong><br />
 
 		Here is a picture of me: <br/ > 
-        <a href="/rango/">Index</a><br />
-<img src="{% static "images/image1.jpg" %}" alt="My picture" /> <!-- New line -->
-    </body>
-
-</html>
+		<img src="{% static "images/image1.jpg" %}" alt="My picture" /> 
+{% endblock %}
