@@ -14,10 +14,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
-#tells Django about our 'static' directory where we store images
-STATIC_PATH = os.path.join(BASE_DIR,'static')
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -33,6 +29,11 @@ ALLOWED_HOSTS = []
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -43,8 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
-) 
-
+    'registration',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,7 +64,7 @@ WSGI_APPLICATION = 'firstproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+DATABASE_PATH = os.path.join(BASE_DIR, 'db.sqlite3')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -88,11 +89,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+
 #defines the base URL with which your Django
 #applications will find static media files when the server is running
 STATIC_URL = '/static/'
 
-LOGIN_URL = '/rango/login/'
 #specifies the location of the newly created static directory
 #requires an absolute path
 STATICFILES_DIRS = (
@@ -111,3 +113,9 @@ TEMPLATE_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+REGISTRATION_OPEN = True        # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after they successful log in
+LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
+                                # and are trying to access pages requiring authentication

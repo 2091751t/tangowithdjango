@@ -1,28 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'rango/base.html' %}
+
 {% load staticfiles %}
+
+{% block title %}{% endblock %}
+
 {% block body_block %}
-    {% if user.is_authenticated %}
-        <h1>Rango says... hello {{ user.username }}!</h1>
-    {% else %}
-        <h1>Rango says... hello world!</h1>
-    {% endif %}
-    {% if categories %}
-        <ul>
-		<br> <strong>Categories:</strong></br>
-        {% for category in categories %}
-            <li><a href="{% url 'category'  category.slug %}">{{ category.name }}</a></li>
-        {% endfor %}
-    {% else %}
-	         <strong>There are no categories present.</strong>
+	{% if user.is_authenticated %}
+		<h1>Rango says... hello {{ user.username }}!</h1>
+	{% else %}
+		<h1>Rango says... hello world!</h1>
 	{% endif %}
-		
+	{% if categories %}
+		<ul>
+			<strong>Top 5 Categories</strong>
+			{% for category in categories %}
+				<li><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<strong>There are no categories present.</strong>
+	{% endif %}
+		<br>
 	{% if pages %}
-	    <br> <strong>Pages ordered by views:</strong></br>
+	<ul>
+		<strong>Top 5 Pages</strong>
 		{% for page in pages %}
-            <li><a href={{ page.url }} >{{ page.title }}</a></li>
-        {% endfor %}
-    {% else %}
-        <strong>There are no pages present.</strong>
-    {% endif %}
-	<p> visits: {{ visits }}</p>
+			<li><a href= {{page.url}} >{{ page.title }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>There are no pages present.</strong>
+	{% endif %}
 {% endblock %}
