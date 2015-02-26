@@ -6,7 +6,6 @@
     {% else %}
         <h1>Rango says... hello world!</h1>
     {% endif %}
-
     {% if categories %}
         <ul>
 		<br> <strong>Categories:</strong></br>
@@ -25,4 +24,5 @@
     {% else %}
         <strong>There are no pages present.</strong>
     {% endif %}
+	<p> visits: {{ visits }}</p>
 {% endblock %}
